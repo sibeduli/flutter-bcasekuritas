@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class WebViewContainer extends StatefulWidget {
   final Function(bool) updateSession;
@@ -89,7 +90,7 @@ class WebViewContainerState extends State<WebViewContainer> {
         if (url != null) {
           print("Loaded URL: ${url.toString()}");
           if (url == WebUri("https://mobileweb.bcasekuritas.co.id/login")) {
-            loginInjection('jku89id', '12345678a');
+            loginInjection(dotenv.get('TEMPORARY_LOGIN_ID'), dotenv.get('TEMPORARY_LOGIN_PASSWORD'));
             setState(() {
               widget.updateSession(false);
             });

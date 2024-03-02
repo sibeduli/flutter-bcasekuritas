@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -5,8 +6,10 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'appbar/in_session.dart';
 import 'appbar/public.dart';
 import 'widget/webview.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future main() async {
+  await dotenv.load(fileName: "assets/.env");
   WidgetsFlutterBinding.ensureInitialized();
 
   if (!kIsWeb && defaultTargetPlatform == TargetPlatform.android) {
